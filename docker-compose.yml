@@ -1,0 +1,22 @@
+version: "3"
+services:
+  next_invocamp:
+    container_name: next_invocamp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: yarn dev
+    ports:
+      - "3000:3000"
+    expose:
+      - 3000
+    environment:
+      BACKEND_URL: "http://localhost:8000"
+    volumes:
+      - .:/frontend
+    networks:
+      - backend_my_network
+
+networks:
+  backend_my_network:
+    external: true
