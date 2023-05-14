@@ -67,6 +67,7 @@ const Filters = () => {
         </h5>
         <button
           type="button"
+          data-drawer-placement="left"
           data-drawer-hide="drawer-right-example"
           aria-controls="drawer-right-example"
           className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
@@ -87,7 +88,7 @@ const Filters = () => {
         <hr />
 
         <h3 className="mt-4 mb-1 font-semibold text-gray-900 dark:text-white">
-          Vacancy Type
+          Employment Type
         </h3>
 
         <ul className="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mb-2">
@@ -118,6 +119,81 @@ const Filters = () => {
                 htmlFor="react-checkbox"
                 className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                 Part Time
+              </label>
+            </div>
+          </li>
+          <li className="w-full rounded-t-lg dark:border-gray-600">
+            <div className="flex items-center pl-3">
+              <input
+                id="react-checkbox"
+                type="checkbox"
+                value=""
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label
+                htmlFor="react-checkbox"
+                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                Internship
+              </label>
+            </div>
+          </li>
+          <li className="w-full rounded-t-lg dark:border-gray-600">
+            <div className="flex items-center pl-3">
+              <input
+                id="react-checkbox"
+                type="checkbox"
+                value=""
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label
+                htmlFor="react-checkbox"
+                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                Temporary
+              </label>
+            </div>
+          </li>
+          <li className="w-full rounded-t-lg dark:border-gray-600">
+            <div className="flex items-center pl-3">
+              <input
+                id="react-checkbox"
+                type="checkbox"
+                value=""
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label
+                htmlFor="react-checkbox"
+                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                Contract
+              </label>
+            </div>
+          </li>
+          <li className="w-full rounded-t-lg dark:border-gray-600">
+            <div className="flex items-center pl-3">
+              <input
+                id="react-checkbox"
+                type="checkbox"
+                value=""
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label
+                htmlFor="react-checkbox"
+                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                Freelance
+              </label>
+            </div>
+          </li>
+          <li className="w-full rounded-t-lg dark:border-gray-600">
+            <div className="flex items-center pl-3">
+              <input
+                id="react-checkbox"
+                type="checkbox"
+                value=""
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label
+                htmlFor="react-checkbox"
+                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                Volunteer
               </label>
             </div>
           </li>
@@ -299,276 +375,9 @@ const Filters = () => {
               </label>
             </div>
           </li>
-        </ul>
+        </ul> 
       </div>
 
-      <div className="hidden lg:block sidebar p-4 max-w-5xl rounded-2xl dark:bg-gray-800 bg-white backdrop-filter backdrop-blur-2xl">
-        <h2 className="mt-4 mb-1 font-semibold text-gray-900 dark:text-white text-lg">
-          Filters
-        </h2>
-
-        <hr />
-
-        <h3 className="mt-4 mb-1 font-semibold text-gray-900 dark:text-white">
-          Vacancy Type
-        </h3>
-
-        {/* <div className="form-check">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          name="jobType"
-          id="check1"
-          value="Permanent"
-          defaultChecked={checkHandler("jobType", "Permanent")}
-          onClick={(e) => handleClick(e.target)}
-        />
-        <label className="form-check-label" htmlFor="check1">
-          Permanent
-        </label>
-      </div> 
-
-      /* <div className="form-check">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          name="jobType"
-          id="check2"
-          value="Temporary"
-          defaultChecked={checkHandler("jobType", "Temporary")}
-          onClick={(e) => handleClick(e.target)}
-        />
-        <label className="form-check-label" htmlFor="check2">
-          Temporary
-        </label>
-      </div>
-
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          name="jobType"
-          id="check3"
-          value="Intership"
-          defaultChecked={checkHandler("jobType", "Intership")}
-          onClick={(e) => handleClick(e.target)}
-        />
-        <label className="form-check-label" htmlFor="check3">
-          Internship
-        </label>
-      </div> */}
-
-        <ul className="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mb-2">
-          <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div className="flex items-center pl-3">
-              <input
-                id="vue-checkbox"
-                type="checkbox"
-                value=""
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                htmlFor="vue-checkbox"
-                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Full Time
-              </label>
-            </div>
-          </li>
-          <li className="w-full rounded-t-lg dark:border-gray-600">
-            <div className="flex items-center pl-3">
-              <input
-                id="react-checkbox"
-                type="checkbox"
-                value=""
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                htmlFor="react-checkbox"
-                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Part Time
-              </label>
-            </div>
-          </li>
-        </ul>
-
-        <h3 className="mt-4 mb-1 font-semibold text-gray-900 dark:text-white">
-          Vacancy Arrangement
-        </h3>
-
-        <ul className="w-ful text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mb-2">
-          <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div className="flex items-center pl-3">
-              <input
-                id="vue-checkbox"
-                type="checkbox"
-                value=""
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                htmlFor="vue-checkbox"
-                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Remote
-              </label>
-            </div>
-          </li>
-          <li className="w-full rounded-t-lg dark:border-gray-600">
-            <div className="flex items-center pl-3">
-              <input
-                id="react-checkbox"
-                type="checkbox"
-                value=""
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                htmlFor="react-checkbox"
-                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                On Site
-              </label>
-            </div>
-          </li>
-        </ul>
-
-        <h3 className="mt-4 mb-1 font-semibold text-gray-900 dark:text-white">
-          Education
-        </h3>
-
-        <ul className="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mb-2">
-          <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div className="flex items-center pl-3">
-              <input
-                id="vue-checkbox"
-                type="checkbox"
-                value=""
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                htmlFor="vue-checkbox"
-                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                High School - Diploma
-              </label>
-            </div>
-          </li>
-          <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div className="flex items-center pl-3">
-              <input
-                id="angular-checkbox"
-                type="checkbox"
-                value=""
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                htmlFor="angular-checkbox"
-                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Bachelor
-              </label>
-            </div>
-          </li>
-          <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div className="flex items-center pl-3">
-              <input
-                id="laravel-checkbox"
-                type="checkbox"
-                value=""
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                htmlFor="laravel-checkbox"
-                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Master
-              </label>
-            </div>
-          </li>
-          <li className="w-full rounded-t-lg dark:border-gray-600">
-            <div className="flex items-center pl-3">
-              <input
-                id="laravel-checkbox"
-                type="checkbox"
-                value=""
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                htmlFor="laravel-checkbox"
-                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                PhD
-              </label>
-            </div>
-          </li>
-        </ul>
-
-        <h3 className="mt-4 mb-2 font-semibold text-gray-900 dark:text-white">
-          Compensation Type
-        </h3>
-
-        <ul className="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mb-2">
-          <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div className="flex items-center pl-3">
-              <input
-                id="vue-checkbox"
-                type="checkbox"
-                value=""
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                htmlFor="vue-checkbox"
-                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Paid
-              </label>
-            </div>
-          </li>
-          <li className="w-full rounded-t-lg dark:border-gray-600">
-            <div className="flex items-center pl-3">
-              <input
-                id="react-checkbox"
-                type="checkbox"
-                value=""
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                htmlFor="react-checkbox"
-                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Unpaid
-              </label>
-            </div>
-          </li>
-        </ul>
-
-        <h3 className="mt-4 mb-1 font-semibold text-gray-900 dark:text-white">
-          Possible Permanent Opportunity
-        </h3>
-
-        <ul className="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mb-2">
-          <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div className="flex items-center pl-3">
-              <input
-                id="vue-checkbox"
-                type="checkbox"
-                value=""
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                htmlFor="vue-checkbox"
-                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                Yes
-              </label>
-            </div>
-          </li>
-          <li className="w-full rounded-t-lg dark:border-gray-600">
-            <div className="flex items-center pl-3">
-              <input
-                id="react-checkbox"
-                type="checkbox"
-                value=""
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                htmlFor="react-checkbox"
-                className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                No
-              </label>
-            </div>
-          </li>
-        </ul>
-      </div>
     </>
   );
 }

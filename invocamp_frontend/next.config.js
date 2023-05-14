@@ -2,7 +2,11 @@
 module.exports = {
   // basePath: '/src/pages',
   images: {
-    domains: ['images.unsplash.com']
+    domains: [
+      'images.unsplash.com',
+      'localhost',
+      '172.23.0.1',
+    ]
   },
   env: {
     API_URL: "http://172.23.0.1:8000",

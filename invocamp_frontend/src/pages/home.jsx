@@ -1678,7 +1678,7 @@ const Home = () => {
                           data-config-id="auto-img-1-3"
                         />
                         <p
-                          className="text-base text-gray-300 font-bold"
+                          className="text-base dark:text-gray-300 text-gray-700 font-bold"
                           data-config-id="auto-txt-3-3">
                           Had some issues where my site crashed and broke,
                           reached out to Shuffle Editor to see if they could
@@ -1687,7 +1687,7 @@ const Home = () => {
                       </div>
                       <div className="flex-initial">
                         <h3
-                          className="font-heading text-2xl text-white font-black"
+                          className="font-heading text-2xl dark:text-white font-black"
                           data-config-id="auto-txt-4-3">
                           Monica Johnson
                         </h3>
@@ -1709,7 +1709,7 @@ const Home = () => {
                           data-config-id="auto-img-2-3"
                         />
                         <p
-                          className="text-base text-gray-300 font-bold"
+                          className="text-base dark:text-gray-300 text-gray-700 font-bold"
                           data-config-id="auto-txt-6-3">
                           Had some issues where my site crashed and broke,
                           reached out to Shuffle Editor to see if they could
@@ -1718,7 +1718,7 @@ const Home = () => {
                       </div>
                       <div className="flex-initial">
                         <h3
-                          className="font-heading text-2xl text-white font-black"
+                          className="font-heading text-2xl dark:text-white font-black"
                           data-config-id="auto-txt-7-3">
                           Monica Johnson
                         </h3>
@@ -1740,7 +1740,7 @@ const Home = () => {
                           data-config-id="auto-img-3-3"
                         />
                         <p
-                          className="text-base text-gray-300 font-bold"
+                          className="text-base dark:text-gray-300 text-gray-700 font-bold"
                           data-config-id="auto-txt-9-3">
                           Had some issues where my site crashed and broke,
                           reached out to Shuffle Editor to see if they could
@@ -1749,7 +1749,7 @@ const Home = () => {
                       </div>
                       <div className="flex-initial">
                         <h3
-                          className="font-heading text-2xl text-white font-black"
+                          className="font-heading text-2xl dark:text-white font-black"
                           data-config-id="auto-txt-10-3">
                           Monica Johnson
                         </h3>

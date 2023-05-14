@@ -16,7 +16,10 @@ const Signin = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        position: "top-center",
+        autoClose: 1000,
+      });
       clearErrors();
     }
 
@@ -113,37 +116,6 @@ const Signin = () => {
                     </div>
                     <div className="w-full p-3">
                       <div className="flex flex-wrap items-center justify-between -m-3">
-                        <div className="w-auto p-3">
-                          <div className="flex items-center">
-                            <input
-                              className="opacity-0 absolute h-6 w-6"
-                              id="signInDarkPatternCheckbox4-1"
-                              type="checkbox"
-                              data-config-id="auto-input-8-4"
-                            />
-                            <div className="flex flex-shrink-0 justify-center items-center w-6 h-6 mr-4 text-transparent bg-gray-800 border border-gray-700 rounded-md">
-                              <svg
-                                width="9"
-                                height="7"
-                                viewBox="0 0 9 7"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                data-config-id="auto-svg-1-4">
-                                <path
-                                  d="M0.603516 3.77075L2.68685 5.85409L7.89518 0.645752"
-                                  stroke="currentColor"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"></path>
-                              </svg>
-                            </div>
-                            <label
-                              className="text-gray-400 font-bold"
-                              htmlFor="signInDarkPatternCheckbox4-1"
-                              data-config-id="auto-txt-6-4">
-                              Remember me
-                            </label>
-                          </div>
-                        </div>
                         <div className="w-auto p-3">
                           <a
                             className="text-blue-500 hover:text-blue-600 font-bold"

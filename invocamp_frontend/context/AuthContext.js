@@ -35,11 +35,11 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(true);
         setLoading(false);
       }
-    } catch (error) {
+    } catch (err) {
       setLoading(false);
       setError(
-        error.response &&
-        (error.response.data.detail || error.response.data.error)
+        err.response &&
+        (err.response.data.error.detail || err.response.data.error)
       );
     }
   };
@@ -65,12 +65,11 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
         router.push("/auth/login");
       }
-    } catch (error) {
-      console.log(error.response.data);
+    } catch (err) {
       setLoading(false);
       setError(
-        error.response &&
-        (error.response.data.detail || error.response.data.error)
+        err.response &&
+        (err.response.data.detail || err.response.data)
       );
     }
   };
@@ -83,10 +82,7 @@ export const AuthProvider = ({ children }) => {
       const res = await axios.get("/api/auth/login")
 
       if (res.data.success) {
-        // loadUser();
-        // setIsAuthenticated(true);
-        // setLoading(false);
-        // router.push("/dashboard");
+        setLoading(false);
         console.log(res.data)
       }
     } catch (error) {
@@ -107,7 +103,7 @@ export const AuthProvider = ({ children }) => {
 
       if (res.data.message) {
         console.log(res.data)
-        // setLoading(false);
+        setLoading(false);
         // router.push("/login");
       }
     } catch (error) {
@@ -231,6 +227,28 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // Confirm Email
+  const confirmEmail = async (token) => {
+    try {
+      const res = await axios.get(`${process.env.API_URL}/api/auth/confirm-email/${token}`);
+
+      if (res.data.success) {
+        setIsAuthenticated(false);
+        setUser(null);
+        setLoading(false);
+        router.push("/auth/login");
+      }
+    } catch (err) {
+      setLoading(false);
+      setIsAuthenticated(false);
+      setUser(null);
+      setError(
+        err.response &&
+        (err.response.data.error.detail || err.response.data.error)
+      );
+    }
+  }
+
   // Clear Errors
   const clearErrors = () => {
     setError(null);
@@ -246,6 +264,7 @@ export const AuthProvider = ({ children }) => {
         updated,
         uploaded,
         login,
+        confirmEmail,
         register,
         updateProfile,
         logout,

@@ -1,10 +1,11 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script';
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="shortcut icon" href="./img/logo2.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="../img/logo2.png" type="image/x-icon" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"

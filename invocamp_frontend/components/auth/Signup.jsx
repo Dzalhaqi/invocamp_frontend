@@ -1,6 +1,7 @@
-import { useState, useContext, useEffect } from "react"
+import { useState, useContext, useEffect, Component } from "react"
 import Link from "next/link"
 import AuthContext from "@/AuthContext"
+import ErrorContainer from "@/validation/ErrorContainer"
 import { useRouter } from "next/router"
 import { toast } from "react-toastify"
 
@@ -8,7 +9,7 @@ import axios from "axios"
 
 const SignUp = () => {
   const [url, setUrl] = useState(null);
-  const [type, setType] = useState("intern");
+  const [type, setType] = useState("Intern");
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [companyName, setCompanyName] = useState(null);
@@ -17,14 +18,17 @@ const SignUp = () => {
   const [confPassword, setConfPassword] = useState(null);
 
   const router = useRouter();
-  const handleTypeAccount = (type) => (type === "intern" ? setType("intern") : setType("recruiter"));
+  const handleTypeAccount = (type) => (type === "Intern" ? setType("Intern") : setType("Recruiter"));
 
   const { loading, error, isAuthenticated, register, clearErrors } =
     useContext(AuthContext);
   
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      if (typeof error !== "string") {
+        let errorContainerComponent = <ErrorContainer error={error} />
+        toast.error(errorContainerComponent);
+      }
       clearErrors();
     }
 
@@ -38,7 +42,7 @@ const SignUp = () => {
     if (password !== confPassword) {
       toast.error("Passwords do not match");
     }
-    if (type === "intern") {
+    if (type === "Intern") {
       register({ firstName, lastName, email, password, confPassword, type });
     } else {
       register({ firstName: companyName, email, password, confPassword, type });
@@ -114,10 +118,10 @@ const SignUp = () => {
 
                     <div className="mt-3 md:flex md:items-center md:-mx-2">
                       <button
-                        onClick={() => handleTypeAccount("intern")}
+                        onClick={() => handleTypeAccount("Intern")}
                         className={`flex justify-center w-full px-6 py-3
                         ${
-                          type === "intern"
+                          type === "Intern"
                             ? "text-white bg-blue-500 rounded-lg md:w-auto md:mx-2 focus:outline-none"
                             : "mt-4 text-blue-500 border border-blue-500 rounded-lg md:mt-0 md:w-auto md:mx-2 dark:border-blue-400 dark:text-blue-400 focus:outline-none"
                         } `}>
@@ -139,10 +143,10 @@ const SignUp = () => {
                       </button>
 
                       <button
-                        onClick={() => handleTypeAccount("recruiter")}
+                        onClick={() => handleTypeAccount("Recruiter")}
                         className={`flex justify-center w-full px-6 py-3
                         ${
-                          type === "recruiter"
+                          type === "Recruiter"
                             ? "text-white bg-blue-500 rounded-lg md:w-auto md:mx-2 focus:outline-none"
                             : "mt-4 text-blue-500 border border-blue-500 rounded-lg md:mt-0 md:w-auto md:mx-2 dark:border-blue-400 dark:text-blue-400 focus:outline-none"
                         } `}>
@@ -167,7 +171,7 @@ const SignUp = () => {
 
                   <form>
                     <div className="flex flex-wrap -m-3">
-                      {type === "intern" ? (
+                      {type === "Intern" ? (
                         <div className="flex w-full p-3 gap-x-3">
                           <div className="">
                             <label
@@ -226,7 +230,7 @@ const SignUp = () => {
                           className="block mb-2 text-sm text-gray-400 font-bold"
                           htmlFor="signInDarkPatternInput4-1"
                           data-config-id="auto-txt-4-4">
-                          {type === "intern"
+                          {type === "Intern"
                             ? "Email Address"
                             : "Company Email"}
                         </label>
@@ -277,37 +281,6 @@ const SignUp = () => {
                       <div className="w-full p-3">
                         <div className="flex flex-wrap items-center justify-between -m-3">
                           <div className="w-auto p-3">
-                            <div className="flex items-center">
-                              <input
-                                className="opacity-0 absolute h-6 w-6"
-                                id="signInDarkPatternCheckbox4-1"
-                                type="checkbox"
-                                data-config-id="auto-input-8-4"
-                              />
-                              <div className="flex flex-shrink-0 justify-center items-center w-6 h-6 mr-4 text-transparent bg-gray-800 border border-gray-700 rounded-md">
-                                <svg
-                                  width="9"
-                                  height="7"
-                                  viewBox="0 0 9 7"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  data-config-id="auto-svg-1-4">
-                                  <path
-                                    d="M0.603516 3.77075L2.68685 5.85409L7.89518 0.645752"
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"></path>
-                                </svg>
-                              </div>
-                              <label
-                                className="text-gray-400 font-bold"
-                                htmlFor="signInDarkPatternCheckbox4-1"
-                                data-config-id="auto-txt-6-4">
-                                Remember me
-                              </label>
-                            </div>
-                          </div>
-                          <div className="w-auto p-3">
                             <a
                               className="text-blue-500 hover:text-blue-600 font-bold"
                               href="https://invocamp.com/#"
@@ -325,7 +298,7 @@ const SignUp = () => {
                             <div
                               className="block px-8 py-3.5 text-lg text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full"
                               data-config-id="auto-txt-8-4">
-                              {loading ? 'Loading...' : 'Register'}
+                              {loading ? "Loading..." : "Register"}
                             </div>
                           </button>
                         </div>

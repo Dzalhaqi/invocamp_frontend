@@ -8,8 +8,7 @@
         "./styles/*",
         "./utils/*",
         "./hooks/*",
-        "./context/*",
-        "./public/*"
+        "./context/*"
       ]
     }
   }

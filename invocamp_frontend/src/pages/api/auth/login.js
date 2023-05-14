@@ -34,16 +34,15 @@ export default async (req, res) => {
           success: true,
         });
       } else {
-        // res.status(response.status).json({
-        //   error: "Authentication failed",
-        // });
-        console.log(res);
+        res.status(response.status).json({
+          error: "Authentication failed",
+        });
       }
     } catch (error) {
-      // res.status(error.response.status).json({
-      //   error: error.response && error.response.data.error,
-      // });
       console.log(error);
+      res.status(error.response.status).json({
+        error: error.response && error.response.data,
+      });
     }
   }
 };

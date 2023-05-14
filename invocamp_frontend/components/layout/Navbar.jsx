@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect, useContext, useState } from "react"
 import Link from "next/link"
 import { TbLogout } from "react-icons/tb";
 import { RxDashboard } from "react-icons/rx"
@@ -11,12 +11,21 @@ const Navbar = () => {
 
   const { isAuthenticated, user, logout } =
     useContext(AuthContext);
+  const [avatar, setAvatar] = useState(null)
   const router = useRouter()
 
+  const activeClass =
+    "text-white bg-blue-700 md:bg-transparent md:text-blue-700 dark:text-white hover:bg-blue-700";
+
   useEffect(() => {
-    initFlowbite()
-    initDropdowns()
-  }, [])
+    initFlowbite();
+
+    if (user) {
+      setAvatar(
+        `${process.env.API_URL}/${user.user.img_profile || user.user.logo}`
+      );
+    }
+  }, [user]);
 
   const handleLogout = () => {
     logout()
@@ -24,11 +33,14 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="bg-white/80 px-2 sm:px-4 py-2.5 md:py-1 md:mx-2 md:border dark:border-gray-500 dark:text-white dark:bg-gray-800/80 backdrop-filter backdrop-blur-sm dark:backdrop-blur-md md:top-2 top-0 sticky md:rounded-full z-[20]">
+    <nav
+      className={`
+        ${router.pathname !== "/vacancies" ? "md:top-2 sticky" : "mt-2"}
+        bg-white/80 px-2 sm:px-4 py-2.5 md:py-1 md:mx-2 md:border dark:border-gray-700 dark:text-white dark:bg-gray-800/80 backdrop-filter backdrop-blur-sm dark:backdrop-blur-md top-0 md:rounded-full z-[20]`}>
       <div className="container flex flex-wrap items-center justify-between mx-auto">
         <Link href="/" className="flex items-center">
           <img
-            src="./img/logo2.png"
+            src="../../img/logo2.png"
             className="h-6 mr-3 sm:h-9"
             alt="Invocamp Logo"
           />
@@ -36,56 +48,109 @@ const Navbar = () => {
             InvoCamp
           </span>
         </Link>
-        {!user ? (
-        <div className="md:order-2 flex items-center gap-x-2">
-          <Link
-            href="/auth/login"
-            className="px-4 py-2 border-2 border-transparent bg-blue-500 hover:bg-blue-600 dark:bg-blue-700 rounded-full text-white">
-            Sign In
-          </Link>
-          <Link
-            href="/auth/register"
-            className="border-2 px-4 py-2 border-gray-300 dark:border-gray-500 rounded-full hover:bg-blue-600 hover:text-white hover:border-transparent dark:text-white">
-            Sign Up
-          </Link>
-        </div>
-        ) : (
         <div className="flex items-center md:order-2">
-          <button
-            type="button"
-            data-dropdown-toggle="language-dropdown-menu"
-            className="inline-flex items-center justify-center px-4 py-2 text-sm text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-            <FaRegUserCircle className="w-5 h-5 mr-2" />
-            {user.first_name}
-          </button>
-          <div
-            className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
-            id="language-dropdown-menu">
-            <ul className="py-2" role="none">
-              <li>
-                <Link
-                  href="/dashboard"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
-                  role="menuitem">
-                  <div className="inline-flex items-center">
-                    <RxDashboard className="h-3.5 w-3.5 mr-2" />
-                    Dashboard
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <button
-                  onClick={logout}
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
-                  role="menuitem">
-                  <div className="inline-flex items-center">
-                    <TbLogout className="h-3.5 w-3.5 mr-2" />
-                    Logout
-                  </div>
-                </button>
-              </li>
-            </ul>
-          </div>
+          {user ? (
+            <>
+              <button
+                type="button"
+                data-dropdown-toggle="language-dropdown-menu"
+                className="inline-flex items-center justify-center px-4 py-2 text-sm text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                {user !== null ? (
+                  <img
+                    src={avatar || "/img/profile.jpg"}
+                    alt="avatar"
+                    className="hidden sm:block h-6 w-6 mr-3 rounded-full"
+                  />
+                ) : (
+                  <Skeleton circle={true} height={10} width={10} />
+                )}
+                {user.user.account_type === "Recruiter"
+                  ? user.user.company_name.slice(0, 8)
+                  : user.user.first_name.slice(0, 8)}
+              </button>
+              <div
+                className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
+                id="language-dropdown-menu">
+                <ul className="py-2" role="none">
+                  <li>
+                    <Link
+                      href="/dashboard"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">
+                      <div className="inline-flex items-center">
+                        <RxDashboard className="h-3.5 w-3.5 mr-2" />
+                        Dashboard
+                      </div>
+                    </Link>
+                  </li>
+
+                  {user && user.user.account_type === "Recruiter" ? (
+                    <>
+                      <li>
+                        <Link
+                          href="/dashboard/vacancies-posted"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                          role="menuitem">
+                          <div className="inline-flex items-center">
+                            <RxDashboard className="h-3.5 w-3.5 mr-2" />
+                            Vacancies Posted
+                          </div>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/dashboard/vacancies-posted/application"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                          role="menuitem">
+                          <div className="inline-flex items-center">
+                            <RxDashboard className="h-3.5 w-3.5 mr-2" />
+                            Vacancies Posted Application
+                          </div>
+                        </Link>
+                      </li>
+                    </>
+                  ) : (
+                    <li>
+                      <Link
+                        href="/dashboard/vacancies-application"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                        role="menuitem">
+                        <div className="inline-flex items-center">
+                          <RxDashboard className="h-3.5 w-3.5 mr-2" />
+                          Vacancies Application
+                        </div>
+                      </Link>
+                    </li>
+                  )}
+
+                  <li>
+                    <button
+                      onClick={logout}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">
+                      <div className="inline-flex items-center">
+                        <TbLogout className="h-3.5 w-3.5 mr-2" />
+                        Logout
+                      </div>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </>
+          ) : (
+            <div className="md:order-2 flex items-center gap-x-2 mr-1 md:mr-0">
+              <Link
+                href="/auth/login"
+                className="px-4 py-2 border-2 border-transparent bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 rounded-full text-white">
+                Sign In
+              </Link>
+              <Link
+                href="/auth/register"
+                className="border-2 px-4 py-2 hidden sm:block border-gray-300 dark:border-gray-500 rounded-full hover:bg-blue-600 hover:text-white hover:border-transparent dark:text-white">
+                Sign Up
+              </Link>
+            </div>
+          )}
           <button
             data-collapse-toggle="mobile-menu-language-select"
             type="button"
@@ -105,8 +170,7 @@ const Navbar = () => {
                 clipRule="evenodd"></path>
             </svg>
           </button>
-        </div> 
-        )}
+        </div>
         <div
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="mobile-menu-language-select">
@@ -114,22 +178,36 @@ const Navbar = () => {
             <li>
               <Link
                 href="/home"
-                className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white">
+                className={`block py-2 pl-3 pr-4 md:p-0 rounded hover:bg-gray-200 md:hover:bg-transparent ${
+                  router.pathname === "/home" && activeClass
+                }`}>
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/vacancies" className="">
+              <Link
+                href="/vacancies"
+                className={`block py-2 pl-3 pr-4 md:p-0 rounded hover:bg-gray-200 md:hover:bg-transparent ${
+                  router.pathname === "/vacancies" && activeClass
+                }`}>
                 Vacancies
               </Link>
             </li>
             <li>
-              <Link href="/team" className="">
+              <Link
+                href="/team"
+                className={`block py-2 pl-3 pr-4 md:p-0 rounded hover:bg-gray-200 md:hover:bg-transparent ${
+                  router.pathname === "/team" && activeClass
+                }`}>
                 Team
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="">
+              <Link
+                href="/contact"
+                className={`block py-2 pl-3 pr-4 md:p-0 rounded hover:bg-gray-200 md:hover:bg-transparent ${
+                  router.pathname === "/contact" && activeClass
+                }`}>
                 Contact
               </Link>
             </li>

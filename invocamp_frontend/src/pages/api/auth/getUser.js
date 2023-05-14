@@ -25,10 +25,9 @@ export default async (req, res) => {
         });
       }
     } catch (error) {
-      console.log(`initial user error: ${error}`);
-      // res.status(error?.response.status).json({
-      //   error: "Something went wrong while retrieving user",
-      // });
+      res.status(error?.response.status).json({
+        error: "Something went wrong while retrieving user",
+      });
     }
   }
 };

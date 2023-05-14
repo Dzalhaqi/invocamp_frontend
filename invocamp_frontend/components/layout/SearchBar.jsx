@@ -3,17 +3,17 @@ import { BsFilterSquare } from 'react-icons/bs'
 
 const SearchBar = () => {
   return (
-    <form className="mb-5">
+    <form className="mb-5 sticky top-3 z-10 max-w-7xl mx-auto">
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
         Search
       </label>
       <div className="relative">
-        <div className="absolute inset-y-0 left-0 flex items-center pl-2 lg:pl-5">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-2">
           <div className="text-center flex items-center">
             <button
-              className="block lg:hidden hover:bg-gray-200 text-gray-500 border-2 border-gray-400 font-medium rounded-full text-sm px-5 py-2.5 mr-2 focus:outline-none dark:focus:ring-blue-800"
+              className="hover:bg-gray-200 text-gray-500 border-2 border-gray-400 font-medium rounded-full text-sm px-5 py-2.5 mr-2 focus:outline-none dark:focus:ring-blue-800"
               type="button"
               data-drawer-target="drawer-right-example"
               data-drawer-show="drawer-right-example"
@@ -39,7 +39,7 @@ const SearchBar = () => {
         <input
           type="search"
           id="default-search"
-          className="block w-full p-4 lg:pl-12 pl-32 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="block w-full p-4 pl-32 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Data Scientist, Jakarta"
           required
         />
